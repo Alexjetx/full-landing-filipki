@@ -99,7 +99,7 @@ body{min-height:0;height:auto;overflow-x:hidden}
   .code{height:42px;min-width:88px;margin-left:8px;padding:0 8px;border-radius:7px;font-size:15px}
   .divider{height:38px;margin:0 7px}
   .bonus{min-width:70px}.bonus strong{font-size:17px}.bonus span{margin-top:4px;font-size:6.5px}
-  .copy{width:58px;height:30px;margin-left:3px;padding:0;display:flex;align-items:center;justify-content:center;gap:4px;font-size:15px}.copy svg{width:23px;height:23px}.copy-label{font-size:9px;font-weight:900;line-height:1}
+  .copy{width:58px;height:30px;margin-left:3px;padding:0;display:flex;align-items:center;justify-content:center;gap:4px;font-size:15px}.copy .copy-icon{width:24px;height:24px}.copy-label{font-size:9px;font-weight:900;line-height:1}
 
   .games{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .card{height:270px;min-height:270px;border-radius:11px}
@@ -126,7 +126,7 @@ body{min-height:0;height:auto;overflow-x:hidden}
   .dot{width:6px;height:6px}
   .play{height:34px;margin-top:6px;border-radius:7px;font-size:10px}
   .play::after{font-size:14px;margin-left:5px}
-  .download{height:50px;margin-top:10px;border-radius:10px;font-size:12px}.android-icon{width:25px;height:25px}.download-arrow{font-size:18px;font-weight:900}
+  .download{height:50px;margin-top:10px;border-radius:10px;font-size:12px}.android-icon{width:32px;height:32px;display:block;flex:0 0 32px}.download-arrow{font-size:20px;font-weight:900;line-height:1}
 }
 </style>
 </head>
@@ -239,8 +239,11 @@ setInterval(updateOnline,60000);
 function copyCode(){
   navigator.clipboard?.writeText("PLAYNOW");
   const button=document.querySelector(".copy");
-  button.textContent="✓";
-  setTimeout(()=>button.textContent="▣",1000);
+  const label=button.querySelector(".copy-label");
+  if(label){
+    label.textContent="COPIED";
+    setTimeout(()=>label.textContent="COPY",1000);
+  }
 }
 </script>
 
